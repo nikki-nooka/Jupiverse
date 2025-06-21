@@ -1,0 +1,461 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-light: #ffffff;
+  --color-dark: #0f0f0f;
+  --gold-primary: #d4af37;
+  --gold-secondary: #b8860b;
+  --gold-light: #f7e98e;
+  --gold-dark: #8b7355;
+  
+  /* Enhanced color palette */
+  --purple-primary: #8b5cf6;
+  --purple-secondary: #a855f7;
+  --blue-primary: #3b82f6;
+  --blue-secondary: #06b6d4;
+  --green-primary: #10b981;
+  --green-secondary: #059669;
+  --pink-primary: #ec4899;
+  --pink-secondary: #f97316;
+  --indigo-primary: #6366f1;
+  --indigo-secondary: #8b5cf6;
+}
+
+.accent-text {
+  @apply text-slate-600 dark:text-slate-300;
+}
+
+body {
+  font-family:
+    "Inter Variable",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+  color: var(--color-dark);
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #f1f5f9 50%, #ffffff 100%);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+
+.dark body {
+  color: var(--color-light);
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f0f0f 100%);
+}
+
+/* Beautiful background overlays */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dark body::before {
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.12) 0%, transparent 50%);
+}
+
+/* only use this to update the style of the auth input fields. use a different class for all other input fields */
+.auth-input-field {
+  @apply w-full px-4 py-3 rounded-container bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition-all shadow-sm hover:shadow text-gray-900 dark:text-white;
+}
+
+/* only use this to update the style of the auth buttons. use the button class for all other buttons */
+.auth-button {
+  @apply w-full px-4 py-3 rounded bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-semibold hover:from-yellow-600 hover:to-yellow-700 transition-colors shadow-sm hover:shadow disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+/* Custom scrollbar for dark mode */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.5);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.7);
+}
+
+/* Light mode scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.7);
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Glass morphism effects */
+.glass {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Gradient text animations */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-text-animated {
+  background: linear-gradient(-45deg, #d4af37, #f7e98e, #8b5cf6, #ec4899, #06b6d4, #d4af37);
+  background-size: 400% 400%;
+  animation: gradient-shift 4s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3));
+}
+
+/* Loading spinner improvements */
+.spinner {
+  border: 4px solid rgba(212, 175, 55, 0.1);
+  border-left: 4px solid #d4af37;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(212, 175, 55, 0.2), 0 10px 10px -5px rgba(212, 175, 55, 0.1);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 20px 25px -5px rgba(212, 175, 55, 0.3), 0 10px 10px -5px rgba(212, 175, 55, 0.15);
+}
+
+/* Progress bar animations */
+.progress-bar {
+  transition: width 1s ease-in-out;
+}
+
+/* Badge glow effects */
+.badge-glow {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.dark .badge-glow {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+}
+
+/* Tooltip improvements */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.dark .tooltip::before {
+  background: rgba(212, 175, 55, 0.9);
+  color: black;
+}
+
+.tooltip:hover::before {
+  opacity: 1;
+}
+
+/* Mobile responsiveness improvements */
+@media (max-width: 768px) {
+  .mobile-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .mobile-text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .mobile-hidden {
+    display: none;
+  }
+}
+
+/* Focus improvements for accessibility */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800;
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-gradient-to-r from-yellow-500 via-orange-500 to-pink-500 hover:from-yellow-600 hover:via-orange-600 hover:to-pink-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 focus-ring shadow-xl hover:shadow-2xl transform hover:scale-105;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  box-shadow: 
+    0 10px 25px -5px rgba(251, 146, 60, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary {
+  @apply bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 hover:from-slate-300 hover:to-slate-400 dark:hover:from-slate-600 dark:hover:to-slate-500 text-gray-900 dark:text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 focus-ring shadow-lg hover:shadow-xl transform hover:scale-105;
+}
+
+.btn-danger {
+  @apply bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 focus-ring shadow-lg hover:shadow-xl transform hover:scale-105;
+  box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.4);
+}
+
+.btn-success {
+  @apply bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 focus-ring shadow-lg hover:shadow-xl transform hover:scale-105;
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+}
+
+/* Input field improvements */
+.input-field {
+  @apply w-full px-6 py-4 bg-white/70 dark:bg-black/30 border border-white/30 dark:border-white/10 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-purple-400 focus:ring-2 focus:ring-purple-400/30 outline-none transition-all duration-300 backdrop-blur-xl;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Card styles */
+.card {
+  @apply bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm;
+}
+
+.card-glass {
+  @apply bg-white/80 dark:bg-black/40 backdrop-blur-2xl rounded-3xl border border-white/20 dark:border-white/10 shadow-2xl;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.dark .card-glass {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Status indicators */
+.status-online {
+  @apply bg-green-500;
+}
+
+.status-offline {
+  @apply bg-gray-400;
+}
+
+.status-busy {
+  @apply bg-red-500;
+}
+
+.status-away {
+  @apply bg-yellow-500;
+}
+
+/* Achievement badge styles */
+.achievement-unlocked {
+  @apply bg-gradient-to-br from-yellow-400/20 to-orange-400/20 border-yellow-400/50 badge-glow;
+}
+
+.achievement-locked {
+  @apply bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700 grayscale;
+}
+
+/* Risk level indicators */
+.risk-low {
+  @apply text-green-500 bg-green-500/10 border-green-500/20;
+}
+
+.risk-medium {
+  @apply text-yellow-500 bg-yellow-500/10 border-yellow-500/20;
+}
+
+.risk-high {
+  @apply text-red-500 bg-red-500/10 border-red-500/20;
+}
+
+/* Tier colors */
+.tier-bronze {
+  @apply bg-gradient-to-r from-orange-600 to-red-600;
+}
+
+.tier-silver {
+  @apply bg-gradient-to-r from-gray-400 to-gray-500;
+}
+
+.tier-gold {
+  @apply bg-gradient-to-r from-yellow-400 to-yellow-600;
+}
+
+.tier-platinum {
+  @apply bg-gradient-to-r from-gray-300 to-gray-400;
+}
+
+.tier-diamond {
+  @apply bg-gradient-to-r from-yellow-300 to-yellow-500;
+}
+
+/* Gold theme specific gradients */
+.gold-gradient {
+  @apply bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600;
+}
+
+.gold-gradient-light {
+  @apply bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400;
+}
+
+.gold-text {
+  @apply text-yellow-600 dark:text-yellow-400;
+}
+
+.gold-border {
+  @apply border-yellow-500/30;
+}
+
+.gold-bg {
+  @apply bg-yellow-500/10;
+}
+
+/* Beautiful new gradient classes */
+.gradient-purple {
+  @apply bg-gradient-to-r from-purple-500 via-pink-500 to-red-500;
+}
+
+.gradient-blue {
+  @apply bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500;
+}
+
+.gradient-green {
+  @apply bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500;
+}
+
+.gradient-rainbow {
+  @apply bg-gradient-to-r from-purple-500 via-pink-500 via-red-500 via-orange-500 via-yellow-500 to-green-500;
+  background-size: 300% 300%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+/* Enhanced card styles */
+.card-premium {
+  @apply bg-gradient-to-br from-white/90 to-white/70 dark:from-black/50 dark:to-black/30 backdrop-blur-2xl rounded-3xl border border-white/30 dark:border-white/10 shadow-2xl;
+}
+
+.card-neon {
+  @apply bg-black/80 backdrop-blur-2xl rounded-3xl border border-purple-500/30 shadow-2xl;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.1);
+}
+
+/* Additional animation classes */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.dark .hover-lift:hover {
+  box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.1), 0 10px 10px -5px rgba(255, 255, 255, 0.04);
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+  from {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.6), 0 0 40px rgba(139, 92, 246, 0.3);
+  }
+}
+
+.float-slow {
+  animation: float-slow 4s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
