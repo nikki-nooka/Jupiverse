@@ -10,6 +10,8 @@ This project (https://dashboard.Jupyter.dev/d/original-cormorant-282).
 The frontend code is in the `app` directory and is built with [Vite](https://vitejs.dev/).
   
 The backend code is in the `Jupyter` directory.
+
+Here is the look of the application which we have built https://original-cormorant-282.convex.app/
   
 `npm run dev` will start the frontend and backend servers.
 
